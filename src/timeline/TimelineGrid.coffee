@@ -311,7 +311,7 @@ class TimelineGrid extends Grid
 		if true
 			@follower = new ScrollFollower(@headScroller, true) # allowPointerEvents=true
 
-		if true
+		if false
 			@eventTitleFollower = new ScrollFollower(@bodyScroller)
 			@eventTitleFollower.minTravel = 50
 			if @isRTL
@@ -767,9 +767,10 @@ class TimelineGrid extends Grid
 			setTimeout ->
 				doVerticals()
 				_this.view.syncRowHeights()
-				setTimeout ->
-					_this.eventTitleFollower.update()
-				, 1000
+				if _this.eventTitleFollower
+					setTimeout ->
+						_this.eventTitleFollower.update()
+					, 1000
 			, 0
 		else
 			doVerticals()
